@@ -42,6 +42,10 @@
                     <input type="date" class="form-control" name="due_date" value="{{ $expense->due_date->format('Y-m-d') }}">
                 </div>
                 <button type="submit" class="btn_2 mb-3" style="border: none; width: 100%;">Enviar</button>
+
+                <form action="/expeses/{{ $user->id }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn_2 mb-3 bg-red" style="border: none; width: 100%;">Deletar</button>
             </form>
         </div>
     </section>

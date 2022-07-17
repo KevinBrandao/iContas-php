@@ -143,6 +143,7 @@ class ExpenseController extends Controller
      */
     public function destroy(Expense $expense)
     {
-        //
+        $expense->delete();
+        return redirect('/dashboard')->with('Success', 'Deletado '); 
     }
 }
