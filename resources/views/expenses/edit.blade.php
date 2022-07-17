@@ -28,7 +28,7 @@
             @endif
             <form action="/expenses" method="post">
                 @csrf
-                @method('put')
+                @method('post')
                 <div class="mb-3">
                     <label for="title">Título</label>
                     <input type="title" class="form-control" name="title" value="{{ $expense->title }}">
