@@ -38,8 +38,8 @@
 
             <form action="/expenses/{{ $expense->id }}" method="post">
                 @csrf
-                @method('post')
-                <button type="submit" class="btn_2 bg-red mb-3" style="border: none; width: 100%;">DELETAR</button>
+                @method('delete')
+                <button type="submit" class="btn_2 bg-red mb-3" style="border: none; width: 100%;">Deletar</button>
                 <a href="/expeses/{{ $expense->id }}" class="btn_2 bg-red mb-4" style="border: none; width: 100%;">Paga</a>
             </form>
         </div>
