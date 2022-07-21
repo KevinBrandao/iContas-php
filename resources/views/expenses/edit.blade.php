@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <!--::header part start::-->
     <header class="main_menu home_menu">
@@ -8,7 +7,6 @@
                 <a class="navbar-brand" href="/dashboard"> <img src="{{ asset('img/landing/logo.png') }}" width="34"
                         alt="logo"> iConta$
                 </a>
-
                 <div style="display: flex; gap: 10px;">
                     <a class="btn_2 d-lg-block" href="/expenses/create">Criar despesa</a>
                     <a class="btn_2 bg-red" href="/logout" style="padding: 16px;"><i class="ti-power-off"></i></a>
@@ -17,7 +15,6 @@
         </div>
     </header>
     <!-- Header part end-->
-
     <!-- content part start-->
     <section class="content_part">
         <div class="expense_container">
@@ -26,26 +23,24 @@
             @else
                 <a href="/expenses/pay/{{ $expense->id }}" class="btn_2 bg-blue mb-4" style="border: none; width: 100%;">Paga</a>
             @endif
-            <form action="/expenses" method="post">
+            
+            <form action="/expenses/{{ $expense->id }}" method="post">
                 @csrf
-                @method('post')
+                @method('put')
                 <div class="mb-3">
-                    <label for="title">Título</label>
-                    <input type="title" class="form-control" name="title" value="{{ $expense->title }}">
-                </div>
-                <div class="mb-3">
-                    <label for="value">Valor</label>
-                    <input type="number" class="form-control" name="value" value="{{ $expense->value }}" step=".01">
-                </div>
-                <div class="mb-4">
+
                     <label for="due_date">Vencimento</label>
                     <input type="date" class="form-control" name="due_date" value="{{ $expense->due_date->format('Y-m-d') }}">
                 </div>
-                <button type="submit" class="btn_2 mb-3" style="border: none; width: 100%;">Enviar</button>
 
-                <form action="/expeses/{{ $user->id }}" method="post">
-                    @csrf
-                    <button type="submit" class="btn_2 mb-3 bg-red" style="border: none; width: 100%;">Deletar</button>
+                <button type="submit" class="btn_2 mb-3" style="border: none; width: 100%;">Enviar</button>
+            </form>
+
+            <form action="/expenses/{{ $expense->id }}" method="post">
+                @csrf
+                @method('post')
+                <button type="submit" class="btn_2 bg-red mb-3" style="border: none; width: 100%;">DELETAR</button>
+                <a href="/expeses/{{ $expense->id }}" class="btn_2 bg-red mb-4" style="border: none; width: 100%;">Paga</a>
             </form>
         </div>
     </section>

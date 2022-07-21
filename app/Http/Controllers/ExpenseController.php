@@ -89,7 +89,9 @@ class ExpenseController extends Controller
         }
 
         $attributes = $request->only([
-            'name'
+            'title',
+            'value',
+            'due_date'
         ]);
 
         $expense->update($attributes);
@@ -141,9 +143,10 @@ class ExpenseController extends Controller
      * @param  \App\Models\Expense  $expense
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Expense $expense)
+    public function delete($id)
     {
+        $expense = Expense::find($id);
         $expense->delete();
-        return redirect('/dashboard')->with('Success', 'Deletado '); 
+        return redirect('/dashboard')->with('success', 'Despesa deletada com sucesso');
     }
 }
